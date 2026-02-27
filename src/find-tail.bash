@@ -4,6 +4,11 @@ set -euo pipefail;
 
 shopt -s nullglob globstar;
 
+if [[ $# -eq 0 ]]; then
+    echo "Usage: pass find-list <pattern>" >&2;
+    exit 1;
+fi;
+
 search_term="${1:-}";
 search_term="${search_term#/}";
 action='tail';
