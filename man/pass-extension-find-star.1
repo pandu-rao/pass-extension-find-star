@@ -1,0 +1,116 @@
+.TH pass-extension-find-star 1 "2026" "Version 0.1.0" "User Commands"
+
+.SH NAME
+pass-extension-find-star - a password-store extension to find and act upon password entries based on patterns
+
+.SH SYNOPSIS
+.B pass
+find-list
+[
+.I pattern
+]
+.br
+.B pass
+find-tail
+[
+.I pattern
+]
+.br
+.B pass
+find-show
+[
+.I pattern
+]
+
+.SH DESCRIPTION
+The
+.BR pass (1)
+builtin
+.B find
+command displays results only in a tree format, requiring the user to navigate the tree to locate an entry.
+.B pass-extension-find-star
+is an extension for
+.BR pass (1)
+that displays matching entries as regular paths, enabling users to quickly find and act on matching entries.
+
+Note:
+.B find-tail
+and
+.B find-show
+depend on the
+.BR pass-extension-tail (1)
+extension.
+
+.SH COMMANDS
+.TP
+\fBfind-list\fP \fIpattern\fP
+.br
+Display all password entries matching
+.I pattern
+as a list of paths.
+.TP
+\fBfind-tail\fP \fIpattern\fP
+.br
+Display all password entries matching
+.I pattern
+as a list of paths, followed by the meta data of each entry, omitting the password itself.
+.TP
+\fBfind-show\fP \fIpattern\fP
+.br
+Display all password entries matching
+.I pattern
+as a list of paths, followed by the full contents of each entry including the password.
+
+.SH EXAMPLES
+.TP
+\fBpass find-list\fP foo
+.nf
+/x/y/foo
+.fi
+.TP
+\fBpass find-tail\fP foo
+.nf
+----------------------------------------
+x/y/foo
+----------------------------------------
+user: <username>
+url: <url>
+note: ~
+========================================
+.fi
+.TP
+\fBpass find-show\fP foo
+.nf
+----------------------------------------
+x/y/foo
+----------------------------------------
+<password>
+user: <username>
+url: <url>
+note: ~
+========================================
+.fi
+
+.SH COMPLETION
+Bash completion is supported. When installed, completion will be available automatically. Alternatively source:
+.I completion/pass-find.bash.completion
+
+.SH SEE ALSO
+.BR pass (1),
+.BR pass-extension-tail (1)
+
+.SH AUTHOR
+Pandu Rao
+
+.SH HOME
+.I https://github.com/pandu-rao/pass-extension-find-star
+
+.SH REPORTING BUGS
+.I https://github.com/pandu-rao/pass-extension-find-star/issues
+
+.SH LICENSE
+Copyright \(co 2026 Pandu Rao.
+.PP
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+.br
+This is free software: you are free to change and redistribute it. There is NO WARRANTY, to the extent permitted by law.

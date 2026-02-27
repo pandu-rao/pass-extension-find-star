@@ -1,0 +1,23 @@
+# Enable user extensions for pass.
+export PASSWORD_STORE_ENABLE_EXTENSIONS=true;
+
+# The find-* extensions.
+PASSWORD_STORE_EXTENSION_COMMANDS+=(find-list);
+PASSWORD_STORE_EXTENSION_COMMANDS+=(find-tail);
+PASSWORD_STORE_EXTENSION_COMMANDS+=(find-show);
+
+
+# pass command to show matching paths.
+__password_store_extension_complete_find-list() {
+    [[ $COMP_CWORD -gt 1 ]] && _pass_complete_entries 1;
+}
+
+# pass command to tail matching entries.
+__password_store_extension_complete_find-tail() {
+    [[ $COMP_CWORD -gt 1 ]] && _pass_complete_entries 1;
+}
+
+# pass command to show matching entries.
+__password_store_extension_complete_find-show() {
+    [[ $COMP_CWORD -gt 1 ]] && _pass_complete_entries 1;
+}
