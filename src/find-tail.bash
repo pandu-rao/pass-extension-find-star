@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -euo pipefail;
-
 shopt -s nullglob globstar;
 
 if [[ $# -eq 0 ]]; then
@@ -13,9 +11,7 @@ search_term="${1:-}";
 search_term="${search_term#/}";
 action='tail';
 
-set +u;
 prefix=${PASSWORD_STORE_DIR-~/.password-store};
-set -u;
 
 password_files=();
 password_files=("$prefix"/**/*.gpg);
